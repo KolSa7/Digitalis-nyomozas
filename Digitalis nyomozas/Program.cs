@@ -14,8 +14,11 @@
 			Evidence bizonyitek1 = new Evidence(102, "Fénykép", "A macska fényképe a kertben.", 90);
             ugyKezelo.ujBizonyitek(bizonyitek1, 1);
             Person szemely = new Person("Kovács János", 35, "Tulajdonos");
-            ugyKezelo.ujSzemely(szemely, 1);
+            Suspect gyanusitott = new Suspect(szemely,99);
+			ugyKezelo.ujSzemely(szemely, 1);
             ugyKezelo.ugylista();   
+            DecisionEngine dontesMotor = new DecisionEngine(gyanusitott, ugyKezelo);
+            dontesMotor.korozesEval();
 
 
 		}
