@@ -8,16 +8,16 @@ namespace Digitalis_nyomozas
 {
 	internal class Suspect
 	{
-		private Person suspectData;
-		private int wantedLevel;
+		private Person gyanusitottAdat;
+		private int korozottSzint;
 
-		public Suspect(Person suspectData, int wantedLevel)
+		public Suspect(Person gyanusitottAdat, int korozottSzint)
 		{
-			this.suspectData = suspectData;
-			this.wantedLevel = wantedLevel;
+			this.gyanusitottAdat = gyanusitottAdat;
+			this.korozottSzint = korozottSzint;
 		}
 
-		public int WantedLevel { get => wantedLevel; set => wantedLevel = value; }
-		internal Person SuspectData { get => suspectData; set => suspectData = value; }
+		public int KorozottSzint { get => korozottSzint; set => korozottSzint = value; }
+		internal Person GyanusitottAdat { get => gyanusitottAdat; set => gyanusitottAdat = value; }
 	}
 }
