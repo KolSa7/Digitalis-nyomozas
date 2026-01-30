@@ -15,19 +15,21 @@ namespace Digitalis_nyomozas
 		private List<Person> szemelyLista;
 		private List<Evidence> bizonyitekLista;
 
-		public Case(int azonosito, string cim, string leiras, string allapot, List<Evidence> bizonyitekLista, List<Person> szemelyLista)
+		public Case(int azonosito, string cim, string leiras, string allapot)
 		{
 			this.azonosito = azonosito;
 			this.cim = cim;
 			this.leiras = leiras;
 			this.allapot = allapot;
-			szemelyLista = new List<Person>();
-			bizonyitekLista = new List<Evidence>();
+			this.szemelyLista = new List<Person>();
+			this.bizonyitekLista = new List<Evidence>();
 		}
 
 		public int Azonosito { get => azonosito; set => azonosito = value; }
 		public string Cim { get => cim; set => cim = value; }
 		public string Leiras { get => leiras; set => leiras = value; }
 		public string Allapot { get => allapot; set => allapot = value; }
+		internal List<Person> SzemelyLista { get => szemelyLista; set => szemelyLista = value; }
+		internal List<Evidence> BizonyitekLista { get => bizonyitekLista; set => bizonyitekLista = value; }
 	}
 }
