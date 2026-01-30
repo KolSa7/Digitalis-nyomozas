@@ -4,12 +4,20 @@
     {
         static void Main(string[] args)
         {
-            Case ugy = new Case(1, "Eltűnt macska", "Egy fekete macska eltűnt a kertből.", "Nyitott");
+            CaseManager ugyKezelo = new CaseManager();
+			Case ugy = new Case(1, "Eltűnt macska", "Egy fekete macska eltűnt a kertből.", "Nyitott");
             Evidence bizonyitek = new Evidence(101, "Fénykép", "A macska fényképe a kertben.", 90);
             EvidenceManager bizonyitekKezelo = new EvidenceManager(ugy);
             bizonyitekKezelo.ujBizonyitek(bizonyitek);
             bizonyitekKezelo.bizonyitekListazas();
-            bizonyitekKezelo.bizonyitekTorles(10);
+            ugyKezelo.ujUgy(ugy);
+			Evidence bizonyitek1 = new Evidence(102, "Fénykép", "A macska fényképe a kertben.", 90);
+            ugyKezelo.ujBizonyitek(bizonyitek1, 1);
+            Person szemely = new Person("Kovács János", 35, "Tulajdonos");
+            ugyKezelo.ujSzemely(szemely, 1);
+            ugyKezelo.ugylista();   
+
+
 		}
     }
 }

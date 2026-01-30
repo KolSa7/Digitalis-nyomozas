@@ -31,5 +31,10 @@ namespace Digitalis_nyomozas
 		public string Allapot { get => allapot; set => allapot = value; }
 		internal List<Person> SzemelyLista { get => szemelyLista; set => szemelyLista = value; }
 		internal List<Evidence> BizonyitekLista { get => bizonyitekLista; set => bizonyitekLista = value; }
+
+		public override string ToString()
+		{
+			return $"Ügy azonosító: {this.Azonosito}, Cím: {this.Cim}, Leírás: {this.Leiras}, Állapot: {this.Allapot}";
+		}
 	}
 }
