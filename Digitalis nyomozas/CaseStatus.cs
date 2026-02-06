@@ -16,5 +16,9 @@ namespace Digitalis_nyomozas
 		}
 
 		public string Status { get => status; set => status = value; }
+		public override string ToString()
+		{
+			return this.status;
+		}
 	}
 }
