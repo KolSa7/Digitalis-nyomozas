@@ -9,21 +9,21 @@ namespace Digitalis_nyomozas
 	internal class DecisionEngine
 	{
 		private Suspect gyanusitott;
-		private CentralDatabase kozpont;
+		private CaseManager ugyek;
 
-		public DecisionEngine(Suspect gyanusitott, CaseManager ugyek, CentralDatabase kozpont)
+		public DecisionEngine(Suspect gyanusitott, CaseManager ugyek)
 		{
 			this.Gyanusitott = gyanusitott;
-			this.Kozpont = kozpont;
+			this.Ugyek = ugyek;
 		}
 
 		internal Suspect Gyanusitott { get => gyanusitott; set => gyanusitott = value; }
-		internal CentralDatabase Kozpont { get => kozpont; set => kozpont = value; }
+		internal CaseManager Ugyek { get => ugyek; set => ugyek = value; }
 
 		public void korozesEval()
 		{
 			bool alreadyDisplayed = false;
-			foreach (Case ugy in Kozpont.Ugyek) { 
+			foreach (Case ugy in ugyek.Ugyek) { 
 				foreach (Person szemely in ugy.SzemelyLista)
 				{
 					if (szemely.Nev == Gyanusitott.GyanusitottAdat.Nev)

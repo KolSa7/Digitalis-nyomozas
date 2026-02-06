@@ -8,42 +8,52 @@ namespace Digitalis_nyomozas
 {
 	internal class CaseManager
 	{
-		private CentralDatabase centralDatabase;
-		public CaseManager(CentralDatabase centralDatabase)
+		private List<Case> ugyek;
+		public CaseManager()
 		{
-			this.CentralDatabase = centralDatabase;
+			this.Ugyek = new List<Case>();
 		}
 
-		internal CentralDatabase CentralDatabase { get => centralDatabase; set => centralDatabase = value; }
+		internal List<Case> Ugyek { get => ugyek; set => ugyek = value; }
 
-		public void UjUgy(string cim, string leiras)
+		public void ujUgy(Case ugy)
 		{
-			CaseStatus CaseStatus =new CaseStatus("Nyitott");
-			Case ujUgy= new Case(centralDatabase.Ugyek.Count + 1, cim, leiras, CaseStatus);
-			centralDatabase.AddUgy(ujUgy);
-			Console.WriteLine($"Ügy {ujUgy.Azonosito} hozzáadva.");
-
+			this.Ugyek.Add(ugy);
+			Console.WriteLine($"Ügy {ugy.Azonosito} hozzáadva.");
 		}
-		public void UgyLista()
+		public void ugylista()
 		{
 			Console.WriteLine("Ügyek listája:");
-			foreach (Case ugy in CentralDatabase.Ugyek)
+			foreach (Case ugy in this.Ugyek)
 			{
 				Console.WriteLine(ugy);
 			}
 		}
-		public void UjBizonyitek(Evidence bizonyitek, Case ugy)
+		public void ujBizonyitek(Evidence bizonyitek, int ugyID)
 		{
-			EvidenceManager manageEvidence=new EvidenceManager(ugy);
-			manageEvidence.ujBizonyitek(bizonyitek);
-			CentralDatabase.AddBizonyitek(bizonyitek);
-			Console.WriteLine($"Bizonyíték {bizonyitek.Azonosito} hozzáadva a(z) {ugy.Azonosito} azonosítójú ügyhöz");
+			foreach (Case ugy in this.Ugyek)
+			{
+				if (ugy.Azonosito == ugyID)
+				{
+					ugy.BizonyitekLista.Add(bizonyitek);
+					Console.WriteLine($"Bizonyíték {bizonyitek.Azonosito} hozzáadva a(z) {ugy.Azonosito} azonosítójú ügyhöz");
+					return;
+				}
+			}
+			Console.WriteLine($"Nincs olyan ügy, aminek az azonosítója {ugyID}");
 		}
-		public void UjSzemely(Person szemely, Case ugy)
+		public void ujSzemely(Person szemely, int ugyID)
 		{
-			ugy.SzemelyLista.Add(szemely);
-			CentralDatabase.AddSzemely(szemely);
-			Console.WriteLine($"{szemely.Nev} hozzáadva a(z) {ugy.Azonosito} azonosítójú ügyhöz.");
+			foreach (Case ugy in this.Ugyek)
+			{
+				if (ugy.Azonosito == ugyID)
+				{
+					ugy.SzemelyLista.Add(szemely);
+					Console.WriteLine($"{szemely.Nev} hozzáadva a(z) {ugy.Azonosito} azonosítójú ügyhöz");
+					return;
+				}
+			}
+			Console.WriteLine($"Nincs olyan ügy, aminek az azonosítója {ugyID}");
 		}
 	}
 }

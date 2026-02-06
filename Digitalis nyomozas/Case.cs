@@ -11,11 +11,11 @@ namespace Digitalis_nyomozas
 		private int azonosito;
 		private string cim;
 		private string leiras;
-		private CaseStatus allapot;
+		private string allapot;
 		private List<Person> szemelyLista;
 		private List<Evidence> bizonyitekLista;
 
-		public Case(int azonosito, string cim, string leiras, CaseStatus allapot)
+		public Case(int azonosito, string cim, string leiras, string allapot)
 		{
 			this.azonosito = azonosito;
 			this.cim = cim;
@@ -28,7 +28,7 @@ namespace Digitalis_nyomozas
 		public int Azonosito { get => azonosito; set => azonosito = value; }
 		public string Cim { get => cim; set => cim = value; }
 		public string Leiras { get => leiras; set => leiras = value; }
-		public CaseStatus Allapot { get => allapot; set => allapot = value; }
+		public string Allapot { get => allapot; set => allapot = value; }
 		internal List<Person> SzemelyLista { get => szemelyLista; set => szemelyLista = value; }
 		internal List<Evidence> BizonyitekLista { get => bizonyitekLista; set => bizonyitekLista = value; }
 
