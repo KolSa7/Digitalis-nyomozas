@@ -23,7 +23,7 @@ namespace Digitalis_nyomozas
 
 		public void ujBizonyitek(string tipus, string leiras, int megbizhatosag)
 		{
-			Evidence bizonyitek= new Evidence(this.Centraldatabase.Bizonyitekok.Count+1, tipus, leiras, megbizhatosag, this.Ugy.Azonosito);
+			Evidence bizonyitek= new Evidence(this.Centraldatabase.Bizonyitekok.Last().Azonosito+1, tipus, leiras, megbizhatosag, this.Ugy.Azonosito);
 			this.Ugy.BizonyitekLista.Add(bizonyitek);
 			centraldatabase.AddBizonyitek(bizonyitek);
 			Console.WriteLine($"Bizonyíték {bizonyitek.Azonosito} hozzáadva a(z) {this.Ugy.Azonosito} azonosítójú ügyhöz");
