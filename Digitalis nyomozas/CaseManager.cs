@@ -32,12 +32,10 @@ namespace Digitalis_nyomozas
 				Console.WriteLine(ugy);
 			}
 		}
-		public void UjBizonyitek(Evidence bizonyitek, Case ugy)
+		public void UjBizonyitek(string tipus, string leiras, int megbizhatosag, Case ugy)
 		{
-			EvidenceManager manageEvidence=new EvidenceManager(ugy);
-			manageEvidence.ujBizonyitek(bizonyitek);
-			CentralDatabase.AddBizonyitek(bizonyitek);
-			Console.WriteLine($"Bizonyíték {bizonyitek.Azonosito} hozzáadva a(z) {ugy.Azonosito} azonosítójú ügyhöz");
+			EvidenceManager manageEvidence=new EvidenceManager(ugy, centralDatabase);
+			manageEvidence.ujBizonyitek( tipus,  leiras,  megbizhatosag);
 		}
 		public void UjSzemely(Person szemely, Case ugy)
 		{

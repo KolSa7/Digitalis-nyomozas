@@ -10,17 +10,17 @@ namespace Digitalis_nyomozas
 	{
 		private Person tanuAdat;
 		private string vallomas;
-		private int megbizhatosag;
+		private int datum;
 
-		public Witness(Person tanuAdat, string vallomas, int megbizhatosag)
+		public Witness(Person tanuAdat, string vallomas, int datum)
 		{
-			this.tanuAdat = tanuAdat;
-			this.vallomas = vallomas;
-			this.megbizhatosag = megbizhatosag;
+			this.TanuAdat = tanuAdat;
+			this.Vallomas = vallomas;
+			this.Datum = datum;
 		}
 
 		public string Vallomas { get => vallomas; set => vallomas = value; }
-		public int Megbizhatosag { get => megbizhatosag; set => megbizhatosag = value; }
+		public int Datum { get => datum; set => datum = value; }
 		internal Person TanuAdat { get => tanuAdat; set => tanuAdat = value; }
 	}
 }
