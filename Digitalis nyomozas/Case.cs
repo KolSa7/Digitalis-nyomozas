@@ -8,19 +8,25 @@ namespace Digitalis_nyomozas
 {
 	internal class Case
 	{
+		public enum Status
+		{
+			Nyitott,
+			Folyamatban,
+			Zárt
+		}
 		private int azonosito;
 		private string cim;
 		private string leiras;
-		private CaseStatus allapot;
+		private Status allapot;
 		private List<Person> szemelyLista;
 		private List<Evidence> bizonyitekLista;
 
-		public Case(int azonosito, string cim, string leiras, CaseStatus allapot)
+		public Case(int azonosito, string cim, string leiras, Status allapot)
 		{
 			this.azonosito = azonosito;
 			this.cim = cim;
 			this.leiras = leiras;
-			this.allapot = allapot;
+			this.Allapot = allapot;
 			this.szemelyLista = new List<Person>();
 			this.bizonyitekLista = new List<Evidence>();
 		}
@@ -28,7 +34,7 @@ namespace Digitalis_nyomozas
 		public int Azonosito { get => azonosito; set => azonosito = value; }
 		public string Cim { get => cim; set => cim = value; }
 		public string Leiras { get => leiras; set => leiras = value; }
-		public CaseStatus Allapot { get => allapot; set => allapot = value; }
+		public Status Allapot { get => allapot; set => allapot = value; }
 		internal List<Person> SzemelyLista { get => szemelyLista; set => szemelyLista = value; }
 		internal List<Evidence> BizonyitekLista { get => bizonyitekLista; set => bizonyitekLista = value; }
 

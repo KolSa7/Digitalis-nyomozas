@@ -18,8 +18,7 @@ namespace Digitalis_nyomozas
 
 		public void UjUgy(string cim, string leiras)
 		{
-			CaseStatus CaseStatus =new CaseStatus("Nyitott");
-			Case ujUgy= new Case(centralDatabase.Ugyek.Last().Azonosito + 1, cim, leiras, CaseStatus);
+			Case ujUgy = new Case(centralDatabase.Ugyek.Last().Azonosito + 1, cim, leiras, Case.Status.Nyitott);
 			centralDatabase.AddUgy(ujUgy);
 			Console.WriteLine($"Ügy {ujUgy.Azonosito} hozzáadva.");
 

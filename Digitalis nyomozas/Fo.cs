@@ -9,7 +9,7 @@ namespace Digitalis_nyomozas
 	internal class Fo
 	{
 		private CentralDatabase adatbazis;
-		public Fo(CentralDatabase adatbazis, DecisionEngine dontes)
+		public Fo(CentralDatabase adatbazis)
 		{
 			this.Adatbazis = adatbazis;
 		}
@@ -125,7 +125,7 @@ namespace Digitalis_nyomozas
 		public void RemoveEvidence()
 		{
 			CaseManager ugykezelo = new CaseManager(adatbazis);
-			Console.WriteLine("Adja meg a törölni kívánt bizonyíték leírását:");
+			Console.WriteLine("Adja meg a törölni kívánt bizonyíték azonosítóját:");
 			int bizAzonosito = int.Parse(Console.ReadLine());
 			foreach (Case ugy in adatbazis.Ugyek)
 			{
@@ -135,6 +135,33 @@ namespace Digitalis_nyomozas
 			Console.WriteLine($"A(z) {bizAzonosito} azonosítójú bizonyíték törölve.");
 			Console.ReadKey();
 			Console.Clear();
+		}
+		public void ChangeStatus()
+		{
+			CaseManager ugykezelo = new CaseManager(adatbazis);
+			Console.WriteLine("Adja meg az ügy azonosítóját");
+			int ugyAzonosito = int.Parse(Console.ReadLine());
+			int status;
+			Console.WriteLine("1: Folyamatban, 2: nyitott, 3:Lezárt");
+			do
+			{
+				status = int.Parse(Console.ReadLine());
+			}
+			while (status < 1 || status > 3);
+			switch (status) { 				
+				case 1:
+					ugykezelo.CentralDatabase.Ugyek[ugyAzonosito].Allapot = Case.Status.Folyamatban;
+					Console.WriteLine($"A(z) {ugyAzonosito} azonosítójú ügy állapota Folyamatban-ra változott.");
+					break;
+				case 2:
+					ugykezelo.CentralDatabase.Ugyek[ugyAzonosito].Allapot = Case.Status.Nyitott;
+					Console.WriteLine($"A(z) {ugyAzonosito} azonosítójú ügy állapota Nyitott-ra változott.");
+					break;
+				case 3:
+					ugykezelo.CentralDatabase.Ugyek[ugyAzonosito].Allapot = Case.Status.Zárt;
+					Console.WriteLine($"A(z) {ugyAzonosito} azonosítójú ügy állapota Zárt-ra változott.");
+					break;
+			}
 		}
 	}
 }
